@@ -1,8 +1,6 @@
 package controllers
 
 import (
-	"fmt"
-	"net/url"
 	"url-shortener/models"
 
 	"github.com/astaxie/beego"
@@ -22,8 +20,6 @@ func (c *URLController) Get() {
 	shortenedURL := models.ShortenedURL{Slug: slug}
 	err := o.Read(&shortenedURL)
 
-	fmt.Println(err)
-
 	if err == orm.ErrNoRows {
 		// TODO: Figure out why it can't find the template
 		c.TplName = "NotFound"
@@ -35,35 +31,4 @@ func (c *URLController) Get() {
 	}
 
 	c.Redirect(shortenedURL.OriginalURL, 302)
-}
-
-// APIURLController is an API controller for URLs
-type APIURLController struct {
-	beego.Controller
-}
-
-// Get handles GET /api/url/:slug
-func (c *APIURLController) Get() {
-	c.Data["JSON"] = "{\"test\": 1234}"
-	c.ServeJSON()
-}
-
-// Post handles POST /api/url
-func (c *APIURLController) Post() {
-	parsed, err := url.ParseRequestURI(c.GetString("url"))
-
-	if err != nil {
-		c.Abort("400")
-	}
-
-	shortenedURL, err := models.CreateShortenedURL(parsed.String())
-
-	if err != nil {
-		c.Abort("500")
-	}
-
-	fmt.Println(shortenedURL)
-
-	c.Data["json"] = &shortenedURL
-	c.ServeJSON()
 }
