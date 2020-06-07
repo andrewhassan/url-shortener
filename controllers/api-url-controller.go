@@ -40,6 +40,10 @@ func (c *APIURLController) Post() {
 		c.Abort("400")
 	}
 
+	if parsed.Scheme != "http" && parsed.Scheme != "https" {
+		c.Abort("400")
+	}
+
 	shortenedURL, err := models.CreateShortenedURL(parsed.String())
 
 	if err != nil {
