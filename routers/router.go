@@ -12,7 +12,8 @@ func init() {
 
 	api := beego.NewNamespace("/api",
 		beego.NSNamespace("/url",
-			beego.NSRouter("/:slug", &controllers.APIURLController{}),
+			beego.NSRouter("/", &controllers.APIURLController{}, "post:Post"),
+			beego.NSRouter("/:slug", &controllers.APIURLController{}, "get:Get"),
 		),
 	)
 
