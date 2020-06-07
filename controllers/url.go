@@ -15,10 +15,10 @@ type URLController struct {
 
 // Get handles GET /:id
 func (c *URLController) Get() {
-	id := c.Ctx.Input.Param(":id")
+	slug := c.Ctx.Input.Param(":slug")
 
 	o := orm.NewOrm()
-	shortenedURL := models.ShortenedURL{Slug: id}
+	shortenedURL := models.ShortenedURL{Slug: slug}
 	err := o.Read(&shortenedURL)
 
 	if err != nil {
