@@ -25,7 +25,7 @@ func (c *URLController) Get() {
 		fmt.Println("Failed to read ShortenedURL:")
 		fmt.Println(err)
 		// TODO: Figure out why it can't find the template
-		c.TplName = "InternalServerError"
+		c.TplName = "NotFound"
 		return
 	}
 
