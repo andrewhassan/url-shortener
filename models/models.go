@@ -13,7 +13,18 @@ import (
 func init() {
 	orm.RegisterModel(new(ShortenedURL))
 	orm.RegisterDriver("mysql", orm.DRMySQL)
-	orm.RegisterDataBase("default", "mysql", "root:root@(mysql:3306)/url_shortener_dev")
+
+	// TODO: This should probably be moved to some env handler util
+	username := os.Getenv("MYSQL_USERNAME")
+	password := os.Getenv("MYSQL_PASSWORD")
+	host := os.Getenv("MYSQL_HOST")
+	port := os.Getenv("MYSQL_PORT")
+	database := os.Getenv("MYSQL_DB")
+
+	// XXX does golang support template strings?
+	connectionString := username + ":" + password + "@(" + host + ":" + port + ")/" + database
+
+	orm.RegisterDataBase("default", "mysql", connectionString)
 }
 
 // SyncDatabase syncs the code-defined schema with the real database

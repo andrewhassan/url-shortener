@@ -1,4 +1,4 @@
-FROM golang:1.14
+FROM library/golang
 
 WORKDIR /go/src/url-shortener
 COPY . .
@@ -6,4 +6,4 @@ COPY . .
 RUN go get -d -v ./...
 RUN go install -v ./...
 
-CMD ["url-shortener"]
+ENTRYPOINT ["url-shortener"]

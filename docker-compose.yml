@@ -6,6 +6,12 @@ services:
       - "8080:8080"
     depends_on:
       - mysql
+    environment:
+      MYSQL_USERNAME: "root"
+      MYSQL_PASSWORD: "root"
+      MYSQL_HOST: "mysql"
+      MYSQL_PORT: 3306
+      MYSQL_DB: "url_shortener_dev"
   mysql:
     image: mysql
     restart: always

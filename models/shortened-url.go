@@ -3,7 +3,7 @@ package models
 // ShortenedURL represents a shortened URL
 type ShortenedURL struct {
 	Slug        string `orm:"pk"`
-	OriginalURL string
+	OriginalURL string `orm:"column(original_url)"`
 }
 
 // TableName redefines the ShortenedURL table to "shortened_url"
