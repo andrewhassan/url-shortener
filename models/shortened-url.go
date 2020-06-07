@@ -32,7 +32,7 @@ func CreateShortenedURL(url string) (ShortenedURL, error) {
 	}
 
 	for i := 0; i < maxTries; i++ {
-		slug := utils.CreateSlug(6)
+		slug := utils.CreateSlug(8)
 		shortenedURL := ShortenedURL{Slug: slug}
 		err := o.Read(&shortenedURL)
 
