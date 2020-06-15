@@ -115,8 +115,7 @@ spec:
         run: url-shortener
     spec:
       containers:
-        - image: url-shortener
-          imagePullPolicy: Never
+        - image: gcr.io/sunlit-mix-280420/url-shortener:v1
           name: url-shortener
           ports:
             - containerPort: 8761
