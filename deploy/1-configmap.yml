@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: 2020-06-14T18:52:05Z
+  name: url-shortener-config
+  namespace: default
+  # resourceVersion: "5800"
+  # uid: b4952dc3-d670-11e5-8cd0-68f728db1985
+data:
+  MYSQL_USERNAME: "root"
+  MYSQL_PASSWORD: "root"
+  MYSQL_HOST: "mysql"
+  MYSQL_PORT: "3306"
+  MYSQL_DB: "url_shortener_dev"
