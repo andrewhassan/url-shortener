@@ -3,6 +3,10 @@ kind: Ingress
 metadata:
   name: url-shortener-ingress
 spec:
-  backend:
-    serviceName: url-shortener
-    servicePort: 8080
+  rules:
+    - http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: url-shortener
+              servicePort: 80

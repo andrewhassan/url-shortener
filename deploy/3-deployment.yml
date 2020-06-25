@@ -106,7 +106,7 @@ spec:
         app: mysql
     spec:
       containers:
-        - image: mysql:5.6
+        - image: marketplace.gcr.io/google/mysql5:latest
           name: mysql
           env:
             # TODO: Use secret in real usage
@@ -125,7 +125,8 @@ spec:
               name: mysql
           volumeMounts:
             - name: mysql-persistent-storage
-              mountPath: /var/lib/mysql
+              mountPath: "/var/lib/mysql"
+              subPath: mysql
       volumes:
         - name: mysql-persistent-storage
           persistentVolumeClaim:
